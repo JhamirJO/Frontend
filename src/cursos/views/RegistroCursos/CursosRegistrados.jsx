@@ -9,6 +9,7 @@ import CursoCard from "./components/CursoCard";
 
 export const CursosRegistrados = () => {
     const [showPopup, setShowPopup] = useState(false);
+    const [searchTerm, setSearchTerm] = useState("");
     const dispatch = useDispatch();
     const { data: planes = [] } = useSelector((state) => state.planEstudios);
     const { cursos } = useSelector(state => state.curso);
@@ -46,12 +47,23 @@ export const CursosRegistrados = () => {
         });
     };
 
+    const filteredCourses = cursos.filter((curso) => 
+        curso.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <div className="cursos-registrados-section">
             <h2 className="title">Cursos Registrados</h2>
+            <input 
+                type="text" 
+                className="barra-busqueda" 
+                placeholder="Buscar cursos..." 
+                value={searchTerm} 
+                onChange={(e) => setSearchTerm(e.target.value)} 
+            />
             <button className="archivados-button" onClick={() => alert("Ver cursos archivados")}>Archivados</button>
             <div className="course-list">
-                {cursos.map((curso, index) => (
+                {filteredCourses.map((curso, index) => (
                     <CursoCard key={index} curso={curso} />
                 ))}
             </div>
