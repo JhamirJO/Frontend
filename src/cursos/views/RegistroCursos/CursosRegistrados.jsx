@@ -1,0 +1,65 @@
+import React, { useState, useEffect } from "react";
+import "./CursosRegistrados.css";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPlanEstudiosActivos } from "../../actions/planestudioThunks.js";
+import { createCurso, getCursos } from "../../actions/cursoThunks.js";
+
+import CursoFormulario from "./components/CursoFormulario";
+import CursoCard from "./components/CursoCard";
+import AddButton from "./components/AddButton";
+
+export const CursosRegistrados = () => {
+    const [showPopup, setShowPopup] = useState(false);
+    const dispatch = useDispatch();
+    const { data: planes = [] } = useSelector((state) => state.planEstudios);
+    const { cursos } = useSelector(state => state.curso);
+
+    useEffect(() => {
+        dispatch(fetchPlanEstudiosActivos());
+        dispatch(getCursos());
+    }, [dispatch]);
+
+    const togglePopup = () => setShowPopup(!showPopup);
+
+    const confirmSaveCourse = (cursoData) => {
+        const newCourse = { ...cursoData, 
+            tipo: "obligatorio", 
+            numHorasTeoria: 3, 
+            numHorasPractica: 2, 
+            numHorasLaboratorio: 1, 
+            numCreditos: 4, 
+            ciclo: "VII", 
+            periodoAcademicoId: 1, 
+            institucionid: 1, 
+            departamentoid: 2, 
+            estado: '1', 
+            sumilla: "Curso de aprendizaje práctico.", 
+            modalidad: "presencial", 
+            etiquetas: "software, diseño, análisis" 
+        };
+
+        dispatch(createCurso(newCourse)).then(() => {
+            dispatch(getCursos());
+            setShowPopup(false);
+        }).catch((error) => {
+            console.error("Error al guardar el curso:", error);
+            alert("Ocurrió un error al registrar el curso.");
+        });
+    };
+
+    return (
+        <div className="cursos-registrados-section">
+            <h2 className="title">Cursos Registrados</h2>
+            <button className="archivados-button" onClick={() => alert("Ver cursos archivados")}>Archivados</button>
+            <div className="course-list">
+                {cursos.map((curso, index) => (
+                    <CursoCard key={index} curso={curso} />
+                ))}
+            </div>
+
+            <AddButton onClick={togglePopup} />
+
+            <CursoFormulario showPopup={showPopup} togglePopup={togglePopup} planes={planes} saveCourse={confirmSaveCourse} />
+        </div>
+    );
+};

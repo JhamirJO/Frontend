@@ -1,0 +1,154 @@
+.title {
+    font-size: 30px; /* Tamaño más grande para dar protagonismo */
+    margin-bottom: 20px;
+    color: #002d6e;
+    text-align: left; /* Alineado a la izquierda */
+    font-weight: bold; /* Negrita más fuerte */
+    padding-left: 10px;
+    width: 100%;
+    max-width: 1100px; /* Alineado al contenido de las tarjetas */
+}
+
+
+.cursos-registrados-section {
+    background-color: #f4f6f8;
+    min-height: 100vh;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+     align-items: flex-start;
+    margin-left: auto; /* Mueve a la derecha */
+    width: 85%;
+}
+
+/* Diseño de Grid para las tarjetas */
+.course-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 50px;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 20px;
+}
+
+
+/* Estilos de las tarjetas */
+.course-card {
+    background-color: #ffffff;
+    padding: 20px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 360px;
+    transform: scale(1); 
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Botón de la tarjeta */
+.course-card button {
+    margin-top: auto;
+    background-color: #0056d2;
+    font-size: 12px; 
+    left: 50%;
+    color: #ffffff;
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 8px 16px;
+    max-width: 130px;
+    transition: background-color 0.3s ease;
+}
+
+
+
+.course-card button:hover {
+    background-color: #0040a8;
+}
+
+/* Mejoras para el botón flotante */
+.add-button {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background-color: #ffffff;
+    border: 3px solid #002d6e;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #002d6e;
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-button:hover {
+    background-color: #e0e7ff;
+    transform: scale(1.1);
+}
+
+
+/* Estilos del texto dentro de las tarjetas */
+.course-card h3 {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: #2563EB;
+    margin-bottom: 12px;
+}
+
+/* Subtítulos en negrita y contenido en viñetas */
+.course-card p {
+    font-size: 14px;
+    color: #333;
+    margin: 10px 0;
+    line-height: 1.4;
+    font-weight: 600; /* Negrita para los subtítulos */
+    display: flex;
+    flex-direction: column;
+}
+
+.course-card p span {
+    font-weight: 400; /* Normal para el contenido */
+    display: block;
+    margin-left: 50px; /* Desplazamiento para las viñetas */
+    text-indent: -15px; /* Para alinear correctamente */
+}
+
+.course-card p span::before {
+    content: "• "; /* Viñeta estilo punto */
+    color: #000000;
+    font-weight: bold;
+}
+
+.cursos-registrados-section {
+    position: relative;
+}
+
+.archivados-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.archivados-button:hover {
+    background-color: #0056d2;
+}
