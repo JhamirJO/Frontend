@@ -51,8 +51,10 @@ export const createCurso = (cursoData) => {
             const data = await resp.json();
             //console.log("Curso creado:", data);
 
-            // Después de crear el curso, puedes recargar los cursos o manejar la lógica que desees
-            dispatch(getCursos());
+            // Después de crear el curso, recargar los cursos y las tarjetas de curso
+            await dispatch(getCursos());
+            await dispatch(getCursoCard());
+
         } catch (error) {
             console.error("Error en el proceso de creación del curso:", error.message);
         }

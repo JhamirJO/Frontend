@@ -2,26 +2,27 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getCursoCard } from "../../actions/cursoThunks.js";
+import { getCursos } from "../../actions/cursoThunks.js";
 import "./CursosRegistrados.css";
 import { Button } from "@mui/material";
 
 export const CursoDetalles = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
-    const { cursosCard, isLoading, error } = useSelector((state) => state.cursoCard);
+    const { cursos, estaCargandoCursos } = useSelector((state) => state.curso);
     const navigate = useNavigate();
 
     React.useEffect(() => {
-        if (cursosCard.length === 0) {
-            dispatch(getCursoCard());
+        // Verifica si los cursos no están cargados y los carga
+        if (cursos.length === 0) {
+            dispatch(getCursos());
         }
-    }, [dispatch, cursosCard.length]);
+    }, [dispatch, cursos.length]);
 
-    const curso = cursosCard.find((curso) => curso.id === parseInt(id));
+    // Buscar el curso usando el ID del parámetro
+    const curso = cursos.find((curso) => curso.id === parseInt(id));
 
-    if (isLoading) return <p>Cargando...</p>;
-    if (error) return <p>Error: {error}</p>;
+    if (estaCargandoCursos) return <p>Cargando...</p>;
     if (!curso) return <p>Curso no encontrado.</p>;
 
     const handleRedirect = () => {
