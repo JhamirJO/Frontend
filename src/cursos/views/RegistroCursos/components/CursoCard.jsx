@@ -42,7 +42,7 @@ const CursoCard = ({ curso }) => {
             <p><strong>Escuela:</strong> <span>{cursoCompleto.departamentoNombre || "N/A"}</span></p>
             <p><strong>Periodo Académico:</strong> <span>{cursoCompleto.codigoPeriodo || "N/A"}</span></p>
             <p><strong>Sección:</strong> <span>{cursoCompleto.seccion || "N/A"}</span></p>
-            <Button variant="contained" color="primary" onClick={handleRedirect}>
+            <Button onClick={handleRedirect}>
                 Ir al curso
             </Button>
         </div>

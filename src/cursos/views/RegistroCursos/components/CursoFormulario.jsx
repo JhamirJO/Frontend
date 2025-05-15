@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogActions, Button, TextField, DialogContentText, Autocomplete } from "@mui/material";
+import "../CursosRegistrados.css";
 
 const CursoFormulario = ({ showPopup, togglePopup, planes, saveCourse }) => {
     const [cursoData, setCursoData] = useState({
@@ -19,7 +20,7 @@ const CursoFormulario = ({ showPopup, togglePopup, planes, saveCourse }) => {
     };
 
     const handleSaveCourse = () => {
-        if (!cursoData.codigo || !cursoData.nombre || !cursoData.planEstudiosId) {
+        if (!cursoData.codigo || !cursoData.nombre || !cursoData.planEstudiosId || !cursoData.seccion) {
             alert("Por favor, complete todos los campos requeridos.");
             return;
         }
@@ -73,8 +74,8 @@ const CursoFormulario = ({ showPopup, togglePopup, planes, saveCourse }) => {
                 />
             </DialogContent>
             <DialogActions>
-                <Button onClick={togglePopup} variant="outlined">Cancelar</Button>
-                <Button onClick={handleSaveCourse} variant="contained" color="primary">Guardar Curso</Button>
+                <Button onClick={togglePopup} className="course-button-Cancelar">Cancelar</Button>
+                <Button onClick={handleSaveCourse} className="course-button-Guardar">Guardar Curso</Button>
             </DialogActions>
         </Dialog>
     );

@@ -6,7 +6,6 @@ import { createCurso, getCursos } from "../../actions/cursoThunks.js";
 
 import CursoFormulario from "./components/CursoFormulario";
 import CursoCard from "./components/CursoCard";
-import AddButton from "./components/AddButton";
 
 export const CursosRegistrados = () => {
     const [showPopup, setShowPopup] = useState(false);
@@ -57,7 +56,7 @@ export const CursosRegistrados = () => {
                 ))}
             </div>
 
-            <AddButton onClick={togglePopup} />
+            <button className="add-button" onClick={togglePopup}>+</button>
 
             <CursoFormulario showPopup={showPopup} togglePopup={togglePopup} planes={planes} saveCourse={confirmSaveCourse} />
         </div>

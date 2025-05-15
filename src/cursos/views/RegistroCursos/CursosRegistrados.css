@@ -67,7 +67,6 @@
 }
 
 
-
 .course-card button:hover {
     background-color: #0040a8;
 }
@@ -137,9 +136,10 @@
 
 .archivados-button {
     position: absolute;
-    top: 10px;
-    right: 20px;
-    background-color: #007bff;
+    top: 70px;
+    right: 40px;
+    font-size: 15px;
+    background-color: #0056d2;
     color: #ffffff;
     border: none;
     padding: 8px 16px;
@@ -151,4 +151,30 @@
 
 .archivados-button:hover {
     background-color: #0056d2;
+}
+
+
+/*Botones del guardado*/
+.course-button-Guardar {
+    margin-top: auto;
+    background-color: #0056d2 !important;
+    font-size: 13px !important; 
+    color: #ffffff !important;
+    border-radius: 8px!important;
+    font-weight: 600!important;
+    padding: 8px 16px!important;
+    max-width: 180px!important;
+    transition: background-color 0.3s ease!important;
+}
+
+.course-button-Cancelar {
+    margin-top: auto;
+    background-color: #d20000e7 !important;
+    font-size: 13px !important; 
+    color: #ffffff !important;
+    border-radius: 8px!important;
+    font-weight: 600!important;
+    padding: 8px 16px!important;
+    max-width: 180px!important;
+    transition: background-color 0.3s ease!important;
 }
