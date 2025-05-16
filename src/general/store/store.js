@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { authSlice } from '../../seguridad/slices';
-import { cursoSlice, planEstudioSlice } from '../../cursos/slices';
+import { cursoSlice, planEstudioSlice, departamentoSlice} from '../../cursos/slices';
 import cursoCardReducer from '../../cursos/slices/cursoCardSlice';
 
 export const store = configureStore({
@@ -9,5 +9,7 @@ export const store = configureStore({
     curso: cursoSlice.reducer,
     planEstudios: planEstudioSlice,
     cursoCard: cursoCardReducer,
+    departamento: departamentoSlice,
+
   },
 });

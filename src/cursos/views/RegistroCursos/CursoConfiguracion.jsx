@@ -37,7 +37,7 @@ export const CursoConfiguracion = () => {
     };
 
     return (
-        <div>
+        <div className="cursos-registrados-section">
             <h2>Configuración del Curso</h2>
             <ConfiguracionFormulario cursoData={cursoData} handleChange={handleChange} />
         </div>

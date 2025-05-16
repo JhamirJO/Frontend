@@ -21,55 +21,6 @@
     width: 85%;
 }
 
-/* Diseño de Grid para las tarjetas */
-.course-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px; 
-    width: 100%;
-    max-width: 1100px;
-    margin-top: 20px;
-}
-
-/* Estilos de las tarjetas */
-.course-card {
-    background-color: #ffffff;
-    padding: 20px 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 360px;
-    width: 300px;
-    transform: scale(1); 
-}
-
-.course-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-
-/* Botón de la tarjeta */
-.course-card button {
-    margin-top: auto;
-    background-color: #0056d2;
-    font-size: 12px; 
-    left: 50%;
-    color: #ffffff;
-    border-radius: 8px;
-    font-weight: 600;
-    padding: 8px 16px;
-    max-width: 130px;
-    transition: background-color 0.3s ease;
-}
-
-
-.course-card button:hover {
-    background-color: #0040a8;
-}
 
 /* Mejoras para el botón flotante */
 .add-button {
@@ -96,51 +47,103 @@
     transform: scale(1.1);
 }
 
-
-/* Estilos del texto dentro de las tarjetas */
-.course-card h3 {
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-    color: #2563EB;
-    margin-bottom: 12px;
-}
-
-/* Subtítulos en negrita y contenido en viñetas */
-.course-card p {
-    font-size: 14px;
-    color: #333;
-    margin: 10px 0;
-    line-height: 1.4;
-    font-weight: 600; /* Negrita para los subtítulos */
-    display: flex;
-    flex-direction: column;
-}
-
-.course-card p span {
-    font-weight: 400; /* Normal para el contenido */
-    display: block;
-    margin-left: 50px; /* Desplazamiento para las viñetas */
-    text-indent: -15px; /* Para alinear correctamente */
-}
-
-.course-card p span::before {
-    content: "• "; /* Viñeta estilo punto */
-    color: #000000;
-    font-weight: bold;
-}
-
 .cursos-registrados-section {
     position: relative;
 }
 
-.archivados-button {
+/* Barra busqueda*/
+
+.barra-busqueda {
+    width: 300px;
+    height: 50px;
     position: absolute;
-    top: 70px;
-    right: 40px;
-    font-size: 15px;
+    top: 130px;
+    left: 200px;
+    padding: 10px 15px;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+.barra-busqueda:focus {
+    border-color: #000000;
+    background-color: #FFFFFF;
+}
+
+
+/* Contenedor del filtro */
+.custom-autocomplete .MuiOutlinedInput-root {
+    width: 150px;
+    border: 1px solid #000 !important;
+    border-radius: 8px !important;
+    padding: 4px 10px !important;
+    background-color: #fff !important;
+    display: flex;
+    align-items: center;
+}
+
+/* Texto del campo (sin modificar) */
+.custom-autocomplete .MuiInputBase-input {
+    padding: 10px 0 !important;
+}
+
+
+/* Vista en cuadrícula (predeterminada) */
+.course-list.grid-view {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 10px;
+}
+
+/* Vista en lista (nueva) */
+.course-list.list-view {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+    
+}
+
+.course-list.list-view .course-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    height: auto;
+    padding: 15px;
+    width: 1010px;
+    
+}
+
+.course-list.list-view .course-card h3 {
+    font-size: 16px;
+    margin-right: 5px;
+    text-align: center;
+    flex: 1.5;
+  
+}
+
+.course-list.list-view .course-card p {
+    font-size: 14px;
+    margin: 0 15px;
+    flex: 2;
+    text-align: center;
+}
+
+
+/* Botón para cambiar vista */
+.toggle-view {
     background-color: #0056d2;
     color: #ffffff;
+    position: absolute;
+    top: 135px; /* Ajusta según tu necesidad */
+    right: 60px; /* Ajusta según tu necesidad */
     border: none;
     padding: 8px 16px;
     border-radius: 4px;
@@ -149,53 +152,21 @@
     transition: background-color 0.3s;
 }
 
-.archivados-button:hover {
-    background-color: #0056d2;
+.toggle-view:hover {
+    background-color: #0040a8;
+}
+.course-list.list-view .course-card button {
+    background-color: #0056d2; /* Color diferente para distinguir */
+    font-size: 14px;
+    left: 0px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    max-width: 120px;
+    transition: background-color 0.3s ease;
+    align-self: flex-end;
 }
 
-
-/*Botones del guardado*/
-.course-button-Guardar {
-    margin-top: auto;
-    background-color: #0056d2 !important;
-    font-size: 13px !important; 
-    color: #ffffff !important;
-    border-radius: 8px!important;
-    font-weight: 600!important;
-    padding: 8px 16px!important;
-    max-width: 180px!important;
-    transition: background-color 0.3s ease!important;
-}
-
-.course-button-Cancelar {
-    margin-top: auto;
-    background-color: #d20000e7 !important;
-    font-size: 13px !important; 
-    color: #ffffff !important;
-    border-radius: 8px!important;
-    font-weight: 600!important;
-    padding: 8px 16px!important;
-    max-width: 180px!important;
-    transition: background-color 0.3s ease!important;
-}
-
-/* Barra busqueda*/
-
-.barra-busqueda {
-    width: 300px;
-    height: 40px;
-    padding: 10px 15px;
-    border: 2px solid #0056d2;;
-    border-radius: 8px;
-    outline: none;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
-    background-color: #F4F6FA;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    margin-bottom: 20px;
-}
-
-.barra-busqueda:focus {
-    border-color: #0056d2;
-    background-color: #FFFFFF;
+.course-list.list-view .course-card button:hover {
+    background-color: #0040a8;
 }

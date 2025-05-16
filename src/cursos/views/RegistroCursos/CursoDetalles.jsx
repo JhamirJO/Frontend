@@ -1,23 +1,15 @@
+// CursoDetalles.jsx
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { getCursos } from "../../actions/cursoThunks.js";
-import "./CursosRegistrados.css";
 import { Button } from "@mui/material";
+import useGestionCursos from "../../actions/useGestionCursos";
+import "./CursosRegistrados.css";
 
 export const CursoDetalles = () => {
     const { id } = useParams();
-    const dispatch = useDispatch();
-    const { cursos, estaCargandoCursos } = useSelector((state) => state.curso);
+    const { cursos, estaCargandoCursos } = useGestionCursos();
     const navigate = useNavigate();
-
-    React.useEffect(() => {
-        // Verifica si los cursos no están cargados y los carga
-        if (cursos.length === 0) {
-            dispatch(getCursos());
-        }
-    }, [dispatch, cursos.length]);
 
     // Buscar el curso usando el ID del parámetro
     const curso = cursos.find((curso) => curso.id === parseInt(id));
@@ -28,7 +20,7 @@ export const CursoDetalles = () => {
     const handleRedirect = () => {
         navigate(`/cursos/${curso.id}/configuracion`);
     };
-    
+
     return (
         <div className="cursos-registrados-section">
             <h2 className="title">{curso ? curso.nombre : "Cargando Curso..."}</h2>
@@ -65,9 +57,9 @@ export const CursoDetalles = () => {
                 <div className="course-card">
                     <h3>Configuración</h3>
                     <p>Ajustes del curso.</p>
-                    <Button variant="contained" color="primary" 
-                    onClick={handleRedirect}>
-                    Ver Configuración</Button>
+                    <Button variant="contained" color="primary" onClick={handleRedirect}>
+                        Ver Configuración
+                    </Button>
                 </div>
             </div>
         </div>

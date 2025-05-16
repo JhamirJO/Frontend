@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogActions, Button, TextField, DialogContentText, Autocomplete } from "@mui/material";
 import "../CursosRegistrados.css";
+import "./CursoFormulario.css";
 
-const CursoFormulario = ({ showPopup, togglePopup, planes, saveCourse }) => {
+const CursoFormulario = ({ showPopup, togglePopup, planes, departamentos, saveCourse }) => {
     const [cursoData, setCursoData] = useState({
         codigo: "",
         nombre: "",
         seccion: "",
-        planEstudiosId: null
+        planEstudiosId: null,
+        departamentoid: null
     });
 
     const handleInputChange = (e) => {
@@ -17,10 +19,16 @@ const CursoFormulario = ({ showPopup, togglePopup, planes, saveCourse }) => {
 
     const handlePlanChange = (event, newValue) => {
         setCursoData({ ...cursoData, planEstudiosId: newValue?.id || null });
+        
+    };
+
+    const handleDepartamentoChange = (event, newValue) => {
+        setCursoData({ ...cursoData, departamentoid: newValue?.id || null});
     };
 
     const handleSaveCourse = () => {
-        if (!cursoData.codigo || !cursoData.nombre || !cursoData.planEstudiosId || !cursoData.seccion) {
+        if (!cursoData.codigo || !cursoData.nombre || !cursoData.planEstudiosId || 
+            !cursoData.seccion || !cursoData.departamentoid) {
             alert("Por favor, complete todos los campos requeridos.");
             return;
         }
@@ -57,6 +65,20 @@ const CursoFormulario = ({ showPopup, togglePopup, planes, saveCourse }) => {
                         <TextField 
                             {...params} 
                             label="Plan de Estudio" 
+                            fullWidth 
+                            margin="dense" 
+                            required 
+                        />
+                    )} 
+                />
+                <Autocomplete 
+                    options={departamentos} 
+                    getOptionLabel={(option) => option.codigo || ""} 
+                    onChange={handleDepartamentoChange}
+                    renderInput={(params) => (
+                        <TextField 
+                            {...params} 
+                            label="Departamento" 
                             fullWidth 
                             margin="dense" 
                             required 
