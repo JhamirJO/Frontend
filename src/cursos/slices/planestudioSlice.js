@@ -1,4 +1,4 @@
-// planEstudioSlice.js
+
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchPlanEstudiosActivos } from "../actions/planestudioThunks";
 
@@ -20,7 +20,7 @@ const planEstudiosSlice = createSlice({
             })
             .addCase(fetchPlanEstudiosActivos.fulfilled, (state, action) => {
                 state.loading = false;
-                state.data = action.payload; // ✅ Aquí se almacena correctamente
+                state.data = action.payload;
             })
             .addCase(fetchPlanEstudiosActivos.rejected, (state, action) => {
                 state.loading = false;

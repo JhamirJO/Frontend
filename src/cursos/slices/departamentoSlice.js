@@ -1,4 +1,4 @@
-// planEstudioSlice.js
+
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchDepartamento } from "../actions/departamentoThunks";
 

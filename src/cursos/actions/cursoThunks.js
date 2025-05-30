@@ -3,8 +3,6 @@ import { iniciaCargaCursoCard, cargaCursoCard, cargaCursoCardError } from '../sl
 
 
 const urlBack = import.meta.env.VITE_APP_BACKEND_URL;
-const institucion = import.meta.env.VITE_APP_INSTITUCION;
-const periodo = import.meta.env.VITE_APP_PERIODO;
 const apiCursos = import.meta.env.VITE_APP_API_CURSOS
 
 export const getCursos = () => {
@@ -76,3 +74,4 @@ export const getCursoCard = () => {
         }
     }
 };
+

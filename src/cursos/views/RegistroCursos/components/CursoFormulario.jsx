@@ -7,7 +7,6 @@ const CursoFormulario = ({ showPopup, togglePopup, planes, departamentos, saveCo
     const [cursoData, setCursoData] = useState({
         codigo: "",
         nombre: "",
-        seccion: "",
         planEstudiosId: null,
         departamentoid: null
     });
@@ -28,7 +27,7 @@ const CursoFormulario = ({ showPopup, togglePopup, planes, departamentos, saveCo
 
     const handleSaveCourse = () => {
         if (!cursoData.codigo || !cursoData.nombre || !cursoData.planEstudiosId || 
-            !cursoData.seccion || !cursoData.departamentoid) {
+            !cursoData.departamentoid) {
             alert("Por favor, complete todos los campos requeridos.");
             return;
         }
@@ -55,7 +54,7 @@ const CursoFormulario = ({ showPopup, togglePopup, planes, departamentos, saveCo
                     margin="dense" 
                     required 
                     onChange={handleInputChange} 
-                    placeholder="p. ej.: Desarrollo de Software"
+                    placeholder="p. ej.: Desarrollo de Software - Sección 3"
                 />
                 <Autocomplete 
                     options={planes} 
@@ -64,7 +63,9 @@ const CursoFormulario = ({ showPopup, togglePopup, planes, departamentos, saveCo
                     renderInput={(params) => (
                         <TextField 
                             {...params} 
-                            label="Plan de Estudio" 
+                            label="Plan de Estudio"
+                            name="Plan de Estudioid"
+                            id="autocomplete-estudio" 
                             fullWidth 
                             margin="dense" 
                             required 
@@ -78,22 +79,16 @@ const CursoFormulario = ({ showPopup, togglePopup, planes, departamentos, saveCo
                     renderInput={(params) => (
                         <TextField 
                             {...params} 
-                            label="Departamento" 
+                            label="Departamento"
+                            name="DepartamentoID"
+                            id="autocomplete-departamento" 
                             fullWidth 
                             margin="dense" 
                             required 
                         />
                     )} 
                 />
-                <TextField 
-                    label="Sección" 
-                    name="seccion" 
-                    fullWidth 
-                    margin="dense" 
-                    required 
-                    onChange={handleInputChange} 
-                    placeholder="p. ej.: 1, 2, 5" 
-                />
+                
             </DialogContent>
             <DialogActions>
                 <Button onClick={togglePopup} className="course-button-Cancelar">Cancelar</Button>

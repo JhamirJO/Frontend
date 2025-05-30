@@ -1,4 +1,4 @@
-// UtilidadesCurso.jsx
+
 import React from "react";
 import { Autocomplete, TextField } from "@mui/material";
 import CursoCard from "./CursoCard";
@@ -22,7 +22,8 @@ export const BarraBusqueda = ({ searchTerm, onSearchChange }) => {
     return (
         <input 
             type="text" 
-            className="barra-busqueda" 
+            className="barra-busqueda"
+            name="buscador-cursos" 
             placeholder="Buscar cursos..." 
             value={searchTerm} 
             onChange={(e) => onSearchChange(e.target.value)} 

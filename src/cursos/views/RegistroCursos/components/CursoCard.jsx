@@ -41,7 +41,6 @@ const CursoCard = ({ curso }) => {
             <h3>{cursoCompleto.nombre || "Nombre no disponible"}</h3>
             <p><strong>Departamento:</strong> <span>{cursoCompleto.departamentoNombre || "N/A"}</span></p>
             <p><strong>Periodo Académico:</strong> <span>{cursoCompleto.codigoPeriodo || "N/A"}</span></p>
-            <p><strong>Sección:</strong> <span>{cursoCompleto.seccion || "N/A"}</span></p>
             <Button onClick={handleRedirect}>
                 Ir al curso
             </Button>

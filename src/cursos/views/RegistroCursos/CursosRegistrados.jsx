@@ -17,13 +17,10 @@ export const CursosRegistrados = () => {
     const dispatch = useDispatch();
     const {
         cursos,
-        estaCargandoCursos,
         errorCursos,
         departamentos,
-        estaCargandoDepartamentos,
         errorDepartamentos,
         planes,
-        estaCargandoPlanes,
         errorPlanes
     } = useGestionCursos();
 
@@ -33,7 +30,7 @@ export const CursosRegistrados = () => {
         const newCourse = {
             ...cursoData,
             tipo: "obligatorio", 
-            numHorasTeoria: 3, 
+            numHorasTeoria: 2, 
             numHorasPractica: 2, 
             numHorasLaboratorio: 1, 
             numCreditos: 4, 
@@ -62,6 +59,7 @@ export const CursosRegistrados = () => {
         return <p>Error al cargar datos.</p>;
     }
 
+    //Búsqueda de curso
     const filteredCourses = cursos.filter((curso) => {
         const matchSearch = curso.nombre.toLowerCase().includes(searchTerm.toLowerCase());
         const matchDepartamento = selectedDepartamento 
