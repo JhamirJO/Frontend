@@ -30,24 +30,24 @@ export const CursosRegistrados = () => {
         const newCourse = {
             ...cursoData,
             tipo: "obligatorio", 
-            numHorasTeoria: 2, 
-            numHorasPractica: 2, 
-            numHorasLaboratorio: 1, 
-            numCreditos: 4, 
-            ciclo: "VII", 
+            numHorasTeoria: null, 
+            numHorasPractica: null, 
+            numHorasLaboratorio: null, 
+            numCreditos: null, 
+            ciclo: "", 
             periodoAcademicoId: 4, 
             institucionid: 1, 
-            estado: '1', 
-            sumilla: "Curso de aprendizaje práctico.", 
-            modalidad: "presencial", 
-            etiquetas: "software, diseño, análisis"
+            estado: "1", 
+            sumilla: "", 
+            modalidad: "", 
+            etiquetas: ""
         };
 
         dispatch(createCurso(newCourse))
             .then(() => {
                 setShowPopup(false);
                 setShowSuccessModal(true);
-                setTimeout(() => setShowSuccessModal(false), 3000); // Modal de éxito se cierra automáticamente en 3 segundos
+                setTimeout(() => setShowSuccessModal(false), 3000);
             })
             .catch((error) => {
                 console.error("Error al guardar el curso:", error);

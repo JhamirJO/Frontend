@@ -1,4 +1,4 @@
-// src/store/thunks/planEstudioThunk.js
+
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 // Configuración de URL del backend usando variables de entorno de Vite

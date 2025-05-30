@@ -17,10 +17,6 @@ export const ConfiguracionFormulario = ({ cursoData, handleChange }) => {
                 <input type="text" name="nombre" value={cursoData.nombre} onChange={handleChange} />
             </div>
             <div>
-                <label>Sección:</label>
-                <input type="number" name="seccion" value={cursoData.seccion} onChange={handleChange} />
-            </div>
-            <div>
                 <label>Tipo:</label>
                 <input type="text" name="tipo" value={cursoData.tipo} onChange={handleChange} />
             </div>
